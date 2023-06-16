@@ -13,9 +13,21 @@ import tool.Add;
 import tool.Check;
 
 /**
+ * Lớp này đại diện cho điểm vào chính của ứng dụng Cửa hàng Hoa.
+ * Nó chứa phương thức chính để khởi động ứng dụng và khởi tạo các đối tượng cần thiết.
  *
- * @author Nguyễn Huy Phúc
+ * Ứng dụng Cửa hàng Hoa cho phép người dùng quản lý hoa, đặt hàng và thực hiện các thao tác khác nhau.
+ * Nó sử dụng các lớp FlowerStore, OrderList, Check và Add để xử lý logic kinh doanh và tương tác của người dùng.
+ *
+ * Phương thức chính khởi tạo dữ liệu mẫu bao gồm hoa, tiêu đề đơn hàng, chi tiết đơn hàng và đối tượng đơn hàng.
+ * Nó cũng hiển thị một menu cho người dùng và thực hiện các hành động dựa trên đầu vào của họ.
+ *
+ * Chú ý: Việc thực hiện thực tế các tùy chọn menu, xử lý đầu vào người dùng và các chức năng khác
+ *       được thực hiện trong các lớp khác được tham chiếu trong lớp này.
+ *
+ * @author: Nguyễn Huy Phúc
  */
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -43,13 +55,13 @@ public class Main {
         OrderHeader orderHeader3 = new OrderHeader("ORD003", "03/06/2023", "Alice Johnson");
         OrderHeader orderHeader4 = new OrderHeader("ORD004", "04/06/2023", "Bob Thompson");
         OrderHeader orderHeader5 = new OrderHeader("ORD005", "05/06/2023", "Emily Wilson");
-        OrderDetail orderDetail1 = new OrderDetail("F001", "5");
-        OrderDetail orderDetail2 = new OrderDetail("F002", "3");
-        OrderDetail orderDetail3 = new OrderDetail("F003", "2");
-        OrderDetail orderDetail4 = new OrderDetail("F004", "4");
-        OrderDetail orderDetail5 = new OrderDetail("F005", "1");
-        OrderDetail orderDetail6 = new OrderDetail("F006", "2");
-        OrderDetail orderDetail7 = new OrderDetail("F007", "6");
+        OrderDetail orderDetail1 = new OrderDetail("ORDT001","F001", "5");
+        OrderDetail orderDetail2 = new OrderDetail("ORDT002","F002", "3");
+        OrderDetail orderDetail3 = new OrderDetail("ORDT003","F003", "2");
+        OrderDetail orderDetail4 = new OrderDetail("ORDT004","F004", "4");
+        OrderDetail orderDetail5 = new OrderDetail("ORDT005","F005", "1");
+        OrderDetail orderDetail6 = new OrderDetail("ORDT006","F006", "2");
+        OrderDetail orderDetail7 = new OrderDetail("ORDT007","F007", "6");
         ArrayList<OrderDetail> orderDetails1 = new ArrayList<>();
         ArrayList<OrderDetail> orderDetails2 = new ArrayList<>();
         ArrayList<OrderDetail> orderDetails3 = new ArrayList<>();
@@ -405,6 +417,7 @@ public class Main {
                                                                         break;
                                                                     case 1:
                                                                         boolean check10 = true;
+                                                                        String orderDetailID = ol.checkOrderDetailID();
                                                                         String flowerID = null;
                                                                         do {
                                                                             flowerID = check.checkFlowerID();
@@ -415,7 +428,7 @@ public class Main {
                                                                             }
                                                                         } while (check10);
                                                                         String quantity = check.checkQuantity();
-                                                                        OrderDetail o = new OrderDetail(flowerID, quantity);
+                                                                        OrderDetail o = new OrderDetail(orderDetailID, flowerID, quantity);
                                                                         listOD.add(o);
                                                                         break;
                                                                     default:

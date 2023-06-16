@@ -10,11 +10,10 @@ public class Menu {
         System.out.println("      **********************************************************");
         System.out.println("      *          WELCOME TO OPTIONS WITH FLOWER SHOP           *");
         System.out.println("      **********************************************************");
-        System.out.println("      *        1. Flower List                                  *");
-        System.out.println("      *        2. Order List                                   *");
-        System.out.println("      *        3. Save                                         *");
-        System.out.println("      *        4. Load                                         *");
-        System.out.println("      *        0. Quit                                         *");
+        System.out.println("      *        1. Flower List    |    2. Order List            *");
+        System.out.println("      *        3. Save           |    4. Load                  *");
+        System.out.println("      **********************************************************");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("      **********************************************************");
         System.out.print("      **(Note: Your options from 0 - 4): ");
     }
@@ -43,11 +42,10 @@ public class Menu {
         System.out.println("      ----------------------------------------------------------");
         System.out.println("      |                   Flower List                          |");
         System.out.println("       -------------------------------------------------------- ");
-        System.out.println("      |        1. Add a flower                                 |");
-        System.out.println("      |        2. Find a flower                                |");
-        System.out.println("      |        3. Update a flower                              |");
-        System.out.println("      |        4. Delete a flower                              |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("      |        1. Add a flower    |      2. Find a flower      |");
+        System.out.println("      |        3. Update a flower |      4. Delete a flower    |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 4): ");
     }
@@ -56,10 +54,10 @@ public class Menu {
         System.out.println("      ----------------------------------------------------------");
         System.out.println("      |                   Order List                           |");
         System.out.println("       -------------------------------------------------------- ");
-        System.out.println("      |        1. Add a order                                  |");
-        System.out.println("      |        2. Display order                                |");
-        System.out.println("      |        3. Sort order                                   |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("      |        1. Add a order     |    2. Display order        |");
+        System.out.println("      |                    3. Sort order                       |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 3): ");
     }
@@ -68,9 +66,9 @@ public class Menu {
         System.out.println("      ----------------------------------------------------------");
         System.out.println("      |                   Flower List                          |");
         System.out.println("       -------------------------------------------------------- ");
-        System.out.println("      |        1. Find by name                                 |");
-        System.out.println("      |        2. Find by id                                   |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("      |        1. Find by name    |      2. Find by id         |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 2): ");
     }
@@ -80,7 +78,8 @@ public class Menu {
         System.out.println("      |                   Flower List                          |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.println("      |        1. Add another flower                           |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 1): ");
     }
@@ -90,7 +89,8 @@ public class Menu {
         System.out.println("      |                   Order List                           |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.println("      |        1. Add another order detail                     |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 1): ");
     }
@@ -100,7 +100,8 @@ public class Menu {
         System.out.println("      |                   Order List                           |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.println("      |        1. Add another order                            |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       -------------------------------------------------------- ");
         System.out.print("      **(Note: Your options from 0 - 1): ");
     }
@@ -109,11 +110,10 @@ public class Menu {
         System.out.println("       -------------------------------------------------------- ");
         System.out.println("      |                   Flower List                          |");
         System.out.println("       -------------------------------------------------------- ");
-        System.out.println("      |        1. Update description                           |");
-        System.out.println("      |        2. Update importDate                            |");
-        System.out.println("      |        3. Update unitPrice                             |");
-        System.out.println("      |        4. Update unitPrice                             |");
-        System.out.println("      |        0. Quit                                         |");
+        System.out.println("      |     1. Update description  |    2. Update importDate   |");
+        System.out.println("      |     3. Update unitPrice    |    4. Update unitPrice    |");
+        System.out.println("       -------------------------------------------------------- ");
+        System.out.println("      |                    0. Quit                             |");
         System.out.println("       --------------------------------------------------------");
         System.out.print("      **(Note: Your options from 0 - 4): ");
     }

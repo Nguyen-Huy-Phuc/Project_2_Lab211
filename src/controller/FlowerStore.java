@@ -14,9 +14,16 @@ import java.util.Scanner;
 import model.Flower;
 import tool.Add;
 import tool.Check;
-import view.Menu;
 
 /**
+ * Lớp FlowerStore đại diện cho cửa hàng hoa. Kế thừa từ HashSet<Flower> để lưu
+ * trữ và quản lý danh sách hoa.
+ *
+ * Cung cấp các phương thức để thêm, tìm kiếm, cập nhật, xóa hoa trong danh
+ * sách. Có khả năng lưu và tải danh sách hoa từ file.
+ *
+ * Các đối tượng Add và Check được sử dụng để thực hiện việc nhập và kiểm tra dữ
+ * liệu.
  *
  * @author Nguyễn Huy Phúc
  */
@@ -25,6 +32,12 @@ public class FlowerStore extends HashSet<Flower> {
     Add add = new Add();
     Check check = new Check();
 
+    /**
+     * Kiểm tra xem một ID hoa đã tồn tại trong danh sách hay chưa.
+     *
+     * @param id ID hoa cần kiểm tra
+     * @return true nếu ID đã tồn tại, ngược lại trả về false
+     */
     public boolean isExistID(String id) {
         for (Flower f : this) {
             if (id.trim().equalsIgnoreCase(id)) {
@@ -34,7 +47,12 @@ public class FlowerStore extends HashSet<Flower> {
         return false;
     }
 
-
+    /**
+     * Kiểm tra xem một tên hoa đã tồn tại trong danh sách hay chưa.
+     *
+     * @param name Tên hoa cần kiểm tra
+     * @return true nếu tên đã tồn tại, ngược lại trả về false
+     */
     public boolean isExistName(String name) {
         for (Flower f : this) {
             if (name.trim().equalsIgnoreCase(f.getDescription())) {
@@ -44,6 +62,11 @@ public class FlowerStore extends HashSet<Flower> {
         return false;
     }
 
+    /**
+     * Kiểm tra và nhập mã ID mới cho hoa.
+     *
+     * @return mã ID đã nhập
+     */
     public String checkID() {
         boolean c = true;
         String id = null;
@@ -60,21 +83,22 @@ public class FlowerStore extends HashSet<Flower> {
         return id;
     }
 
-    public void add() {
-        String id = this.checkID();
-        String description = check.checkdDscription();
-        String importDate = check.checkImportDate();
-        String unitPrice = check.checkUnitPrice();
-        String category = check.checkCategory();
-        Flower f = new Flower(id, description, importDate, unitPrice, category);
-        this.add(f);
-    }
-
+    /**
+     * Thêm một hoa mới vào danh sách.
+     *
+     * @param f Đối tượng hoa cần thêm
+     * @return true nếu thêm thành công, ngược lại trả về false
+     */
     public boolean addNewFlower(Flower f) {
         return this.add(f);
     }
 
-
+    /**
+     * Tìm kiếm hoa trong danh sách theo tên hoặc mã ID.
+     *
+     * @param check Chuỗi tìm kiếm (tên hoặc mã ID)
+     * @return Đối tượng hoa tìm được, nếu không tìm thấy trả về null
+     */
     public Flower findFlower(String check) {
         Flower F = null;
         for (Flower f : this) {
@@ -85,6 +109,15 @@ public class FlowerStore extends HashSet<Flower> {
         return F;
     }
 
+    /**
+     * Tiếp tục quá trình tìm kiếm hoặc thoát khỏi menu tìm kiếm.
+     *
+     * @param find_ Giá trị hiện tại của lựa chọn (tìm kiếm hoặc thoát)
+     * @param find Biến kiểm tra quá trình tìm kiếm
+     * @param check Chuỗi đầu vào để kiểm tra lựa chọn
+     * @return true nếu quá trình tìm kiếm tiếp tục, false nếu thoát khỏi menu
+     * tìm kiếm
+     */
     public boolean continueFind(int find_, boolean find, String check) {
         do {
             find_ = Integer.parseInt(check);
@@ -92,7 +125,6 @@ public class FlowerStore extends HashSet<Flower> {
                 case 0:
                     boolean check1 = true;
                     do {
-//                                    menu.exit();
                         String dd = add.addCheck();
                         if (dd.trim().equalsIgnoreCase("y")) {
                             System.out.println("       Exit");
@@ -116,6 +148,11 @@ public class FlowerStore extends HashSet<Flower> {
         return find;
     }
 
+    /**
+     * Tìm kiếm hoa theo tên.
+     *
+     * @see Add#addDescription()
+     */
     public void findFlowerByName() {
         boolean find = true;
         do {
@@ -125,11 +162,10 @@ public class FlowerStore extends HashSet<Flower> {
                 find = false;
             } else {
                 System.out.println("   (!) Nurse does not exist");
-//                menu.findNurse();
                 int find_ = -1;
                 String check = add.addCheck();
                 if (!check.matches("\\d+")) {
-                    System.out.println("   (!) Please enter true fomat");
+                    System.out.println("   (!) Please enter true format");
                 } else {
                     find = this.continueFind(find_, find, check);
                 }
@@ -137,6 +173,11 @@ public class FlowerStore extends HashSet<Flower> {
         } while (find);
     }
 
+    /**
+     * Tìm kiếm hoa theo mã ID.
+     *
+     * @see Add#addID()
+     */
     public void findFlowerByID() {
         boolean find = true;
         do {
@@ -146,11 +187,10 @@ public class FlowerStore extends HashSet<Flower> {
                 find = false;
             } else {
                 System.out.println("   (!) Nurse does not exist");
-//                menu.findNurse();
                 int find_ = -1;
                 String check = add.addCheck();
                 if (!check.matches("\\d+")) {
-                    System.out.println("   (!) Please enter true fomat");
+                    System.out.println("   (!) Please enter true format");
                 } else {
                     find = this.continueFind(find_, find, check);
                 }
@@ -158,35 +198,64 @@ public class FlowerStore extends HashSet<Flower> {
         } while (find);
     }
 
+    /**
+     * Cập nhật mô tả cho hoa.
+     *
+     * @param a Đối tượng hoa cần cập nhật
+     * @see Check#checkDescription()
+     */
     public void updateDescription(Flower a) {
         String description = check.checkdDscription();
         a.setDescription(description);
         System.out.println("       Update Success");
     }
 
+    /**
+     * Cập nhật ngày nhập hàng cho hoa.
+     *
+     * @param a Đối tượng hoa cần cập nhật
+     * @see Check#checkImportDate()
+     */
     public void updateImportDate(Flower a) {
         String importDate = check.checkImportDate();
         a.setImportDate(importDate);
         System.out.println("       Update Success");
     }
 
+    /**
+     * Cập nhật giá bán cho hoa.
+     *
+     * @param a Đối tượng hoa cần cập nhật
+     * @see Check#checkUnitPrice()
+     */
     public void updateUnitPrice(Flower a) {
         String unitPrice = check.checkUnitPrice();
         a.setUnitPrice(unitPrice);
         System.out.println("       Update Success");
     }
 
+    /**
+     * Cập nhật loại hoa cho hoa.
+     *
+     * @param a Đối tượng hoa cần cập nhật
+     * @see Check#checkCategory()
+     */
     public void updateCategory(Flower a) {
         String category = check.checkCategory();
         a.setCategory(category);
         System.out.println("       Update Success");
     }
 
-
+    /**
+     * Tiếp tục quá trình cập nhật hoặc thoát khỏi menu cập nhật.
+     *
+     * @param b Giá trị hiện tại của lựa chọn (cập nhật hoặc thoát)
+     * @return -1 nếu thoát khỏi menu cập nhật, giá trị khác trả về giá trị hiện
+     * tại của lựa chọn
+     */
     public int continueUpdate(int b) {
         boolean check1 = true;
         do {
-//                            menu.exit();
             String d1 = add.addCheck();
             if (d1.trim().equalsIgnoreCase("y")) {
                 System.out.println("       Exit");
@@ -201,6 +270,14 @@ public class FlowerStore extends HashSet<Flower> {
         return b;
     }
 
+    /**
+     * Kiểm tra và thực hiện xóa hoa khỏi danh sách.
+     *
+     * @param delete Biến kiểm tra quá trình xóa
+     * @param staffID_ Mã ID hoa cần xóa
+     * @param x Biến kiểm tra xóa
+     * @return true nếu xóa thành công, false nếu xóa thất bại
+     */
     public boolean checkDelete(boolean delete, String staffID_, boolean x) {
         String check = add.addCheck();
         if (!x) {
@@ -212,10 +289,26 @@ public class FlowerStore extends HashSet<Flower> {
         return delete;
     }
 
+    /**
+     * Xóa hoa khỏi danh sách theo mã ID.
+     *
+     * @param id Mã ID hoa cần xóa
+     * @return Chuỗi thông báo xóa thành công hoặc xóa thất bại
+     */
     public String deleteNurse(String id) {
-        this.remove(id);
-        return "       Delete Success.\n";
+        if (this.isExistID(id)) {
+            this.remove(this.findFlower(id));
+            return "       Delete Success";
+        } else {
+            return "       Delete Fail";
+        }
     }
+
+    /**
+     * Tải các loại hoa từ tệp và thêm chúng vào FlowerStore.
+     *
+     * @throws Exception nếu có lỗi xảy ra trong quá trình tải.
+     */
     public void loadFile() throws Exception {
         ArrayList<Flower> arr = new ArrayList<>();
         FileInputStream fileIn = null;
@@ -251,8 +344,15 @@ public class FlowerStore extends HashSet<Flower> {
             this.add(flower);
         }
     }
-     public int saveFile() throws Exception {
-          int check = 0;
+
+    /**
+     * Lưu các loại hoa từ FlowerStore vào tệp.
+     *
+     * @return 1 nếu thao tác lưu thành công, 0 nếu không thành công.
+     * @throws Exception nếu có lỗi xảy ra trong quá trình lưu.
+     */
+    public int saveFile() throws Exception {
+        int check = 0;
         ArrayList<Flower> list = new ArrayList<>(this);
         if (list.isEmpty()) {
             System.out.println("There is no flower in store");
